@@ -24,7 +24,17 @@ const updatePackage = async (id: number, pack: Package) => {
   return { status: newPackage.status, data: newPackage.data };
 };
 
+const deletePackage = async (id: number) => {
+  const { status, data } = await getPackageById(id);
+  if (status === 404) {
+    return { status, data };
+  } 
+  await PackageModel.destroy({ where: { id } });
+  return { status: 204 };
+};
+
 export default {
+  deletePackage,
   updatePackage,
   getPackageById,
 };

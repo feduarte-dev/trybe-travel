@@ -15,20 +15,15 @@ const updatePackage = async (req: Request, res: Response) => {
   return res.status(status).json(data);
 };
 
+const deletePackage = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const idNumber = Number(id);
+  const { status, data } = await packageService.deletePackage(idNumber);
+  return res.status(status).json(data);
+};
+
 export default {
+  deletePackage,
   updatePackage,
   getPackageById,
 };
-
-// const updatePost = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const { authorization } = req.headers;
-//     const { title, content } = req.body;
-//     const { userId } = await getUserFromToken(authorization);
-//     const { status, data } = await postTransformService.updatePost(id, title, content, userId);
-//     return res.status(status).json(data);
-//   } catch (error) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
