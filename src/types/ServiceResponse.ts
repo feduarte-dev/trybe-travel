@@ -1,5 +1,5 @@
 export type ServiceResponseError = {
-  status: 404,
+  status: 404 | 400,
   data: { message: string }
 };
 
