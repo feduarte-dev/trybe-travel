@@ -8,9 +8,9 @@ const app = express();
 
 app.use(express.json());
 app.use(LoginRouter);
-app.use(auth);
 app.use(usersRouter);
 app.use(packagesRouter);
+app.use(auth);
 app.get('/', (_req: Request, res: Response) => {
   res.status(200).send('Aplicação está funcionando!');
 });
